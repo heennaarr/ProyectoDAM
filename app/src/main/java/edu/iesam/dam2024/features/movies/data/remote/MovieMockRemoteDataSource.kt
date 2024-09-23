@@ -14,4 +14,7 @@ class MovieMockRemoteDataSource {
             Movie(title="title4" , poster = "poster4" , id="4")
         )
     }
+    fun getMovie(movieId:String):Movie?{
+        return getMovies().firstOrNull{it.id ==movieId}
+    }
 }

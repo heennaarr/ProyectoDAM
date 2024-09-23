@@ -1,30 +1,39 @@
 package edu.iesam.dam2024.features.movies.presentation
 
+import MovieMockRemoteDataSource
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import edu.iesam.dam2024.R
+import edu.iesam.dam2024.features.movies.data.MovieDataRepository
+import edu.iesam.dam2024.features.movies.domain.MovieRepository
 
 
 //Es la parte cercana a la parte visual del usuario
 class MovieActivity : AppCompatActivity() {
 
-    //var puede cambiar--val no puede cambiar
-    //Si una var puede admitir nulos se pone ? private var name:String? = null
+    private val movieRepository: MovieRepository = MovieDataRepository(MovieMockRemoteDataSource())
+    private val movieFactory: MovieFactory = MovieFactory(movieRepository)
+    private val viewModel: MovieViewModel = movieFactory.buildViewModel()
 
-
-   private val moviewFactory : MovieFactory = MovieFactory()
-//Aqui android crea la actividad / como cuando java hace un new
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    //viewModel recibe los elementos de la vista. Activity avisa al view model que la vista se ha creado
-    val viewModel = moviewFactory.buildViewModel()
-    val movies =viewModel.viewCreated()
-    Log.d("@dev", movies.toString())
+
+        // Llama a viewCreated para obtener la lista de películas
+        val movies = viewModel.viewCreated()
+        Log.d("@dev", movies.toString()) // Log de las películas
+
+        // Simula un clic en el primer elemento si hay películas
+
+            val selectedMovie = viewModel.itemSelected(movies.first().id)
+            Log.d("@dev", "Selected movie: $selectedMovie") // Log de la película seleccionada
+
     }
+
+
 //metodos del ciclo de vida
-    override fun onStart() { // el usuario ve la pantalla pero aun no puede interactuar con ella
+   /** override fun onStart() { // el usuario ve la pantalla pero aun no puede interactuar con ella
         super.onStart()
     Log.d("@dev", "onStart")
 
@@ -47,7 +56,7 @@ class MovieActivity : AppCompatActivity() {
         super.onStop()
         Log.d("@dev", "onStop")
 
-    }
+    }**/
     //si pasa mucho rato en pause o queremos detener total onStop
     //para eliminar, detener bruto/ cuando deslizas app para arriba onDestroy()
 
