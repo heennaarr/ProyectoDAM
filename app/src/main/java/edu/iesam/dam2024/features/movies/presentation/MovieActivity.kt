@@ -13,7 +13,7 @@ import edu.iesam.dam2024.features.movies.domain.MovieRepository
 class MovieActivity : AppCompatActivity() {
 
     private val movieRepository: MovieRepository = MovieDataRepository(MovieMockRemoteDataSource())
-   a private val movieFactory: MovieFactory = MovieFactory(movieRepository)
+    private val movieFactory: MovieFactory = MovieFactory(movieRepository)
     private val viewModel: MovieViewModel = movieFactory.buildViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
