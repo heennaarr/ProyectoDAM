@@ -33,6 +33,13 @@
                 android:layout_marginRight="20dp">
             </TextView>
 
+            <TextView
+                android:id="@+id/superhero_superPoder_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp">
+            </TextView>
+
         </LinearLayout>
         <!--Fila 2-->
         <LinearLayout
@@ -52,6 +59,13 @@
 
             <TextView
                 android:id="@+id/superhero_alias_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/superhero_superPoder_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp">
@@ -79,6 +93,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp">
             </TextView>
+            <TextView
+                android:id="@+id/superhero_superPoder_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp">
+            </TextView>
         </LinearLayout>
         <!--Fila 4-->
         <LinearLayout
@@ -98,6 +118,12 @@
 
             <TextView
                 android:id="@+id/superhero_alias_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp">
+            </TextView>
+            <TextView
+                android:id="@+id/superhero_superPoder_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp">

@@ -30,23 +30,29 @@ class SuperHeroActivity : AppCompatActivity() {
         //Cuando usamos bind lo que queremos es asignar datos a elementos de las vistas
         findViewById<TextView>(R.id.superhero_id_1).text = superheroes[0].id
         findViewById<TextView>(R.id.superhero_alias_1).text = superheroes[0].alias
+        findViewById<TextView>(R.id.superhero_superPoder_1).text = superheroes[0].superPoder
         //R de recursos, eliges id y despues el id correspondiente, .text es una opcion que rellenas aqui para el layour
         findViewById<TextView>(R.id.superhero_id_2).text = superheroes[1].id
         findViewById<TextView>(R.id.superhero_alias_2).text = superheroes[1].alias
+        findViewById<TextView>(R.id.superhero_superPoder_2).text = superheroes[1].superPoder
 
         findViewById<TextView>(R.id.superhero_id_3).text = superheroes[2].id
         findViewById<TextView>(R.id.superhero_alias_3).text = superheroes[2].alias
+        findViewById<TextView>(R.id.superhero_superPoder_3).text = superheroes[2].superPoder
 
         findViewById<TextView>(R.id.superhero_id_4).text = superheroes[3].id
         findViewById<TextView>(R.id.superhero_alias_4).text = superheroes[3].alias
+        findViewById<TextView>(R.id.superhero_superPoder_4).text = superheroes[3].superPoder
 
         findViewById<LinearLayout>(R.id.layout_1).setOnClickListener{
             viewModel.itemSelected(superheroes[0].id)
             val movie1: SuperHero? =viewModel.itemSelected(superheroes[0].id)
             movie1?.let {
-                Log.d("@dev" , "Pelicula seleccionada: ${it.alias}")
+                Log.d("@dev" , "Superheroe seleccionado: ${it.alias}")
             }
+
         }
+
 
     }
 }
