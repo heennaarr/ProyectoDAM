@@ -63,7 +63,11 @@ class MovieActivity : AppCompatActivity() {
         val movie = viewModel.itemSelected("1")
         movie?.let{
             xmlDataSource.save(it)
+
+
         }
+        val movieSaved = xmlDataSource.findMovie()
+        Log.d("@dev", movieSaved.toString())
 
     }
 
