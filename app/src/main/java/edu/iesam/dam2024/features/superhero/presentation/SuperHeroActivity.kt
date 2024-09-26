@@ -23,8 +23,7 @@ class SuperHeroActivity : AppCompatActivity() {
         val superheroes =viewModel.viewCreated()
         bindData(superheroes)
         Log.d("@dev", superheroes.toString())
-        val selectedsuperhero = viewModel.itemSelected(superheroes.first().id)
-        Log.d("@dev", "Selected movie: $selectedsuperhero")
+
     }
     private fun bindData(superheroes: List<SuperHero>){
         //Cuando usamos bind lo que queremos es asignar datos a elementos de las vistas
@@ -48,6 +47,14 @@ class SuperHeroActivity : AppCompatActivity() {
             viewModel.itemSelected(superheroes[0].id)
             val movie1: SuperHero? =viewModel.itemSelected(superheroes[0].id)
             movie1?.let {
+                Log.d("@dev" , "Superheroe seleccionado: ${it.alias}")
+            }
+
+        }
+        findViewById<LinearLayout>(R.id.layout_2).setOnClickListener{
+            viewModel.itemSelected(superheroes[1].id)
+            val movie2: SuperHero? =viewModel.itemSelected(superheroes[1].id)
+            movie2?.let {
                 Log.d("@dev" , "Superheroe seleccionado: ${it.alias}")
             }
 

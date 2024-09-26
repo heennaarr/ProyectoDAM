@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.data.MovieDataRepository
+import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2024.features.movies.domain.Movie
 import edu.iesam.dam2024.features.movies.domain.MovieRepository
 
@@ -31,9 +32,7 @@ class MovieActivity : AppCompatActivity() {
 
         // Simula un clic en el primer elemento si hay películas
 
-            val selectedMovie = viewModel.itemSelected(movies.first().id)
-            Log.d("@dev", "Selected movie: $selectedMovie") // Log de la película seleccionada
-
+             textXml()
     }
     private fun bindData(movies:List<Movie>){
         //Cuando usamos bind lo que queremos es asignar datos a elementos de las vistas
@@ -57,8 +56,16 @@ class MovieActivity : AppCompatActivity() {
             }
         }
 
-    }
 
+    }
+    private fun textXml(){
+        val xmlDataSource = MovieXmlLocalDataSource(this)
+        val movie = viewModel.itemSelected("1")
+        movie?.let{
+            xmlDataSource.save(it)
+        }
+
+    }
 
 //metodos del ciclo de vida
    /** override fun onStart() { // el usuario ve la pantalla pero aun no puede interactuar con ella

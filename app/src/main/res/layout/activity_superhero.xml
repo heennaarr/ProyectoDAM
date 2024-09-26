@@ -1,133 +1,150 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.superhero.presentation.SuperHeroActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".features.superhero.presentation.SuperHeroActivity">
 
 
-        <!--Fila 1-->
-        <LinearLayout
-            android:id="@+id/layout_1"
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"><!-->se adapta al tamaño de los hijos-->
-            <!--> match parent se adapta a all el ancho de la pantalla-->
-            <TextView
-                android:id="@+id/superhero_id_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                >
+    <!--Fila 1-->
+    <LinearLayout
+        android:id="@+id/layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
 
-            </TextView>
+        <TextView
+            android:id="@+id/superhero_id_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
 
-            <TextView
-                android:id="@+id/superhero_alias_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp">
-            </TextView>
+            android:ellipsize="end"/>
 
-            <TextView
-                android:id="@+id/superhero_superPoder_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp">
-            </TextView>
+        <TextView
+            android:id="@+id/superhero_alias_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
 
-        </LinearLayout>
-        <!--Fila 2-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="20dp">
+            android:ellipsize="end"/>
 
-            <TextView
-                android:id="@+id/superhero_id_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                >
+        <TextView
+            android:id="@+id/superhero_superPoder_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
 
-            </TextView>
-
-            <TextView
-                android:id="@+id/superhero_alias_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp">
-            </TextView>
-
-            <TextView
-                android:id="@+id/superhero_superPoder_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp">
-            </TextView>
-        </LinearLayout>
-        <!--Fila 3-->
-        <LinearLayout
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/superhero_id_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                >
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/superhero_alias_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp">
-            </TextView>
-            <TextView
-                android:id="@+id/superhero_superPoder_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp">
-            </TextView>
-        </LinearLayout>
-        <!--Fila 4-->
-        <LinearLayout
-            android:layout_margin="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/superhero_id_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                >
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/superhero_alias_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp">
-            </TextView>
-            <TextView
-                android:id="@+id/superhero_superPoder_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp">
-            </TextView>
-
-        </LinearLayout>
+            android:ellipsize="end"/>
     </LinearLayout>
+
+    <!--Fila 2-->
+    <LinearLayout
+        android:id="@+id/layout_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/superhero_id_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/superhero_alias_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/superhero_superPoder_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+            android:ellipsize="end"/>
+    </LinearLayout>
+
+    <!--Fila 3-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/superhero_id_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/superhero_alias_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/superhero_superPoder_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+
+            android:ellipsize="end"/>
+    </LinearLayout>
+
+    <!--Fila 4-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/superhero_id_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/superhero_alias_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/superhero_superPoder_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginRight="20dp"
+
+            android:ellipsize="end"/>
+    </LinearLayout>
+
+</LinearLayout>
