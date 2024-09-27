@@ -7,7 +7,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import edu.iesam.dam2024.R
+import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2024.features.superhero.data.SuperHeroDataRepository
+import edu.iesam.dam2024.features.superhero.data.local.SuperHeroXmlLocalDataSource
 import edu.iesam.dam2024.features.superhero.domain.SuperHero
 import edu.iesam.dam2024.features.superhero.domain.SuperHeroRepository
 
@@ -23,7 +25,7 @@ class SuperHeroActivity : AppCompatActivity() {
         val superheroes =viewModel.viewCreated()
         bindData(superheroes)
         Log.d("@dev", superheroes.toString())
-
+        textXml()
     }
     private fun bindData(superheroes: List<SuperHero>){
         //Cuando usamos bind lo que queremos es asignar datos a elementos de las vistas
@@ -62,6 +64,17 @@ class SuperHeroActivity : AppCompatActivity() {
 
 
     }
+    private fun textXml(){
+         val xmlDataSource = SuperHeroXmlLocalDataSource(this)
+        val superHero = viewModel.itemSelected("1")
+        superHero?.let{
+            xmlDataSource.save(it)
+        }
+
+
+    }
+
+
 }
 
 
