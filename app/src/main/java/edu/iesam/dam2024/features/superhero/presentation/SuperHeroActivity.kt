@@ -70,7 +70,9 @@ class SuperHeroActivity : AppCompatActivity() {
         superHero?.let{
             xmlDataSource.save(it)
         }
-
+        val superHeroSaved= xmlDataSource.findAll()
+        Log.d("@dev", superHeroSaved.toString())
+        xmlDataSource.delete()
 
     }
 

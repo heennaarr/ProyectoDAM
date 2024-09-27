@@ -11,20 +11,35 @@ class MovieXmlLocalDataSource(private val context: Context) {
         context.getString(R.string.name_file_xml), Context.MODE_PRIVATE)
 
     fun save(movie:Movie) { //guardar
-        val editor = sharedPref.edit()
-        editor.putString("id", movie.id)
-        editor.putString("title", movie.title)
-        editor.putString("poster", movie.poster)
-        editor.apply() //edit.commit()
+
+
+        sharedPref.edit().apply{
+            putString("id", movie.id)
+            putString("title", movie.title)
+            putString("poster", movie.poster)
+            apply()
+        }
+
     }
 
     fun findMovie(): Movie {//recupera /lee
         //SE USA LA LIBRERIA GSON -> HACE QUE UN MODELO LO PASA A JSON, LA G ES POR QUE LO HA HECHO GOOGLE
-        val id = sharedPref.getString("id" , "")
-        val title = sharedPref.getString("title" , "")
-        val poster = sharedPref.getString("poster" , "")
-        return Movie(id!!,title!!,poster!!)
+       sharedPref.apply {
+           val id =getString("id" , "")
+           val title = getString("title" , "")
+           val poster = getString("poster" , "")
+          return  Movie(
+              getString("id" , "")!!,
+               getString("title" , "") !!,
+               getString("poster" , "")!! )
+       }
 
 
+
+
+
+    }
+    fun delete(){
+        sharedPref.edit().clear().apply()//elimina el fichero xml
     }
 }

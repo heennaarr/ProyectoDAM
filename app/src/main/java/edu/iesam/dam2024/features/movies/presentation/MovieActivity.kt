@@ -68,6 +68,7 @@ class MovieActivity : AppCompatActivity() {
         }
         val movieSaved = xmlDataSource.findMovie()
         Log.d("@dev", movieSaved.toString())
+        xmlDataSource.delete()
 
     }
 
