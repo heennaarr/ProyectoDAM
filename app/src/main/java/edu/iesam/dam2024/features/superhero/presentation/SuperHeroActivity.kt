@@ -25,7 +25,9 @@ class SuperHeroActivity : AppCompatActivity() {
         val superheroes =viewModel.viewCreated()
         bindData(superheroes)
         Log.d("@dev", superheroes.toString())
-        textXml()
+        //textXml()
+        testListXml()
+
     }
     private fun bindData(superheroes: List<SuperHero>){
         //Cuando usamos bind lo que queremos es asignar datos a elementos de las vistas
@@ -70,10 +72,18 @@ class SuperHeroActivity : AppCompatActivity() {
         superHero?.let{
             xmlDataSource.save(it)
         }
-        val superHeroSaved= xmlDataSource.findAll()
+        val superHeroSaved= xmlDataSource.find()
         Log.d("@dev", superHeroSaved.toString())
         xmlDataSource.delete()
 
+    }
+    private fun testListXml() {
+        val superhero = viewModel.viewCreated()
+        val xmlDataSource = SuperHeroXmlLocalDataSource(this)
+        xmlDataSource.saveAll(superhero)
+
+        val moviesFromXml = xmlDataSource.findAll()
+        Log.d("@dev", moviesFromXml.toString())
     }
 
 

@@ -1,45 +1,67 @@
 package edu.iesam.dam2024.features.movies.data.local
 
+import android.annotation.SuppressLint
 import android.content.Context
+import com.google.gson.Gson
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.domain.Movie
 
-//Context es la primera clase, todas las actividades son contexto. Es la clase padre del padre del padre del padre...de activity
 class MovieXmlLocalDataSource(private val context: Context) {
 
-    private val sharedPref= context.getSharedPreferences(
-        context.getString(R.string.name_file_xml), Context.MODE_PRIVATE)
+    private val sharedPref = context.getSharedPreferences(
+        context.getString(R.string.name_file_xml), Context.MODE_PRIVATE
+    )
 
-    fun save(movie:Movie) { //guardar
+    private val gson = Gson()
 
+    fun save(movie: Movie) {
+        sharedPref
+            .edit().apply {
+                putString("id", movie.id)
+                putString("title", movie.title)
+                putString("poster", movie.poster)
+                apply()
+            }
+    }
 
-        sharedPref.edit().apply{
-            putString("id", movie.id)
-            putString("title", movie.title)
-            putString("poster", movie.poster)
-            apply()
+    fun saveAll(movies: List<Movie>) {
+        val editor = sharedPref.edit()
+        movies.forEach { movie ->
+            editor.putString(movie.id, gson.toJson(movie))
         }
-
+        editor.apply()
     }
 
-    fun findMovie(): Movie {//recupera /lee
-        //SE USA LA LIBRERIA GSON -> HACE QUE UN MODELO LO PASA A JSON, LA G ES POR QUE LO HA HECHO GOOGLE
-       sharedPref.apply {
-           val id =getString("id" , "")
-           val title = getString("title" , "")
-           val poster = getString("poster" , "")
-          return  Movie(
-              getString("id" , "")!!,
-               getString("title" , "") !!,
-               getString("poster" , "")!! )
-       }
-
-
-
-
-
+    fun find(): Movie {
+        sharedPref.apply {
+            return Movie(
+                getString("id", "")!!,
+                getString("title", "")!!,
+                getString("poster", "")!!
+            )
+        }
     }
-    fun delete(){
-        sharedPref.edit().clear().apply()//elimina el fichero xml
+
+    fun findAll(): List<Movie>{
+        val movies = ArrayList<Movie>()
+        val mapMovies = sharedPref.all //as Map<String, String>
+        mapMovies.values.forEach { jsonMovie ->
+            val movie = gson.fromJson(jsonMovie as String, Movie::class.java)
+            movies.add(movie)
+        }
+        return movies
     }
+    fun findById(movieId:String):Movie?{
+        return sharedPref.getString(movieId, null)?.let{movie->
+            gson.fromJson(movie,Movie::class.java)
+        }
+    }
+    fun delete() {
+        sharedPref.edit().clear().apply()
+    }
+
+    fun deleteById(movieId:String){
+        sharedPref.edit().remove(movieId).apply()
+    }
+
 }

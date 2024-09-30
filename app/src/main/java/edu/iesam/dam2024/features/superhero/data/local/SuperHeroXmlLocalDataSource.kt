@@ -2,10 +2,12 @@ package edu.iesam.dam2024.features.superhero.data.local
 
 import SuperHeroMockRemoteDataSource
 import android.content.Context
-import edu.iesam.dam2024.features.movies.domain.Movie
+import com.google.gson.Gson
+import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.superhero.domain.SuperHero
 
 class SuperHeroXmlLocalDataSource(private val context: Context) {
+    private val gson = Gson()
     private val sharedPref=context.getSharedPreferences(
         "superhero", Context.MODE_PRIVATE
     )
@@ -19,7 +21,14 @@ class SuperHeroXmlLocalDataSource(private val context: Context) {
         editor.apply()
 
     }
-    fun findAll():SuperHero{
+    fun saveAll(superHeroes: List<SuperHero>) {
+        val editor = sharedPref.edit()
+        superHeroes.forEach { superhero ->
+            editor.putString(superhero.id, gson.toJson(superhero))
+        }
+        editor.apply()
+    }
+    fun find():SuperHero{
         sharedPref.apply {
             val id = getString("id", "")
             val nombre = getString("title", "")
@@ -36,6 +45,15 @@ class SuperHeroXmlLocalDataSource(private val context: Context) {
                 getString("publisher" , "")!!,
             )
         }
+    }
+    fun findAll(): List<SuperHero>{
+        val superHeroes = ArrayList<SuperHero>()
+        val mapSuperHero = sharedPref.all //as Map<String, String>
+        mapSuperHero.values.forEach { jsonSuperHero ->
+            val superHero = gson.fromJson(jsonSuperHero as String, SuperHero::class.java)
+            superHeroes.add(superHero)
+        }
+        return superHeroes
     }
 
     fun delete(){

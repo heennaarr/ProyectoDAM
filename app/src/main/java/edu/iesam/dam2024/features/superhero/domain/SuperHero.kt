@@ -10,6 +10,8 @@ data class SuperHero(
     val lugarDeNacimiento: String,
     val publisher: String,
     val imagen: String
-)
+) {
+
+}
 
 

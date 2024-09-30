@@ -16,7 +16,7 @@
         android:orientation="horizontal"><!-->se adapta al tamaño de los hijos-->
         <!--> match parent se adapta a all el ancho de la pantalla-->
         <TextView
-            android:id="@+id/superhero_id_1"
+            android:id="@+id/movie_id_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
