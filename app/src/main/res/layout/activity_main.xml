@@ -99,7 +99,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/movie_title_4"
+            android:id="@+id/serie_title_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"

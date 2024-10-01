@@ -46,7 +46,7 @@ class MovieActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.movie_title_3).text = movies[2].title
 
         findViewById<TextView>(R.id.movie_id_4).text = movies[3].id
-        findViewById<TextView>(R.id.movie_title_4).text = movies[3].title
+        findViewById<TextView>(R.id.serie_title_4).text = movies[3].title
 
 
     }
