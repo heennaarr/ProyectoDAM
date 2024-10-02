@@ -1,5 +1,6 @@
 package edu.iesam.dam2024.features.movies.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
@@ -23,58 +24,46 @@ class MovieActivity : AppCompatActivity() {
 
         val movies = viewModel.viewCreated()
         bindData(movies)
-        viewModel.itemSelected(movies.first().id) //Simular un click sobre un item
+
         //testXml()
         //testListXml()
-        testMovie()
+
     }
+
 
     private fun bindData(movies: List<Movie>) {
         findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
         findViewById<TextView>(R.id.movie_title_1).text = movies[0].title
         findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
-            val movie1: Movie? = viewModel.itemSelected(movies[0].id)
-            movie1?.let {
-                Log.d("@dev", "Pelicula seleccionada: ${it.title}")
-            }
+            navigateToMovieDetail(movies[0].id)
+
         }
 
         findViewById<TextView>(R.id.movie_id_2).text = movies[1].id
         findViewById<TextView>(R.id.movie_title_2).text = movies[1].title
+        findViewById<LinearLayout>(R.id.layout_2).setOnClickListener {
+            navigateToMovieDetail(movies[1].id)
+        }
 
         findViewById<TextView>(R.id.movie_id_3).text = movies[2].id
         findViewById<TextView>(R.id.movie_title_3).text = movies[2].title
+        findViewById<LinearLayout>(R.id.layout_3).setOnClickListener {
+            navigateToMovieDetail(movies[2].id)
+        }
+
 
         findViewById<TextView>(R.id.movie_id_4).text = movies[3].id
         findViewById<TextView>(R.id.serie_title_4).text = movies[3].title
-
-
-    }
-
-    private fun testXml() {
-        val xmlDataSource = MovieXmlLocalDataSource(this)
-        val movie = viewModel.itemSelected("1")
-        movie?.let {
-            xmlDataSource.save(it)
+        findViewById<LinearLayout>(R.id.layout_4).setOnClickListener {
+            navigateToMovieDetail(movies[3].id)
         }
 
-        val movieSaved = xmlDataSource.find()
-        Log.d("@dev", movieSaved.toString())
 
-        xmlDataSource.delete()
     }
-    private fun testMovie(){
-        viewModel.viewCreated()
-        val xmlDataSource = MovieXmlLocalDataSource(this)
-        val movie = xmlDataSource.findById("2")
-        Log.d("@dev", "$movie")
+    private fun navigateToMovieDetail(movieId: String){
+        startActivity(MovieDetailActivity.getIntent(this, movieId))
     }
-    private fun testListXml() {
-        val movies = viewModel.viewCreated()
-        val xmlDataSource = MovieXmlLocalDataSource(this)
-        xmlDataSource.saveAll(movies)
 
-        val moviesFromXml = xmlDataSource.findAll()
-        Log.d("@dev", moviesFromXml.toString())
-    }
+
+
 }

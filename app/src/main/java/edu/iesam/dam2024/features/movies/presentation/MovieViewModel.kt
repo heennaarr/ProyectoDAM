@@ -7,8 +7,7 @@ import edu.iesam.dam2024.features.movies.domain.Movie
 
 // Un ViewModel puede recibir todos los casos de uso que necesite la vista
 class MovieViewModel(
-    private val getMoviesUseCase: GetMoviesUseCase,
-    private val getMovieSelectedUseCase: GetMovieSelectedUseCase // Ahora añadimos este caso de uso
+    private val getMoviesUseCase: GetMoviesUseCase // Ahora añadimos este caso de uso
 ) : ViewModel() {
 
     // Llama al caso de uso para obtener la lista de películas
@@ -17,7 +16,5 @@ class MovieViewModel(
     }
 
     // Llama al caso de uso para obtener la película seleccionada
-    fun itemSelected(movieId: String): Movie? {
-        return getMovieSelectedUseCase.invoke(movieId)
-    }
+
 }

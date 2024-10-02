@@ -12,7 +12,7 @@ class SerieActivity : AppCompatActivity() {
     private lateinit var viewModel : SerieViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_serie)
 
         serieFactory = SerieFactory(this)
         viewModel = serieFactory.buildViewModel()
