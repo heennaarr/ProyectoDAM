@@ -5,10 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import edu.iesam.dam2024.app.extensions.loadUrl
 import com.bumptech.glide.Glide
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.domain.Movie
@@ -31,11 +30,16 @@ class MovieDetailActivity : AppCompatActivity() {
     }
     private fun bindData(movie: Movie) {
         val imageView = findViewById<ImageView>(R.id.poster)
-        Glide
-            .with(this)
-            .load(movie.poster)
-            .into(imageView)
+        imageView.loadUrl(movie.poster)
         Log.d("poster" , movie.poster)
+        findViewById<TextView>(R.id.titleMovie).text=movie.title
+        findViewById<TextView>(R.id.descriptionMovie).text = movie.description
+        findViewById<TextView>(R.id.year).text = movie.year
+        findViewById<TextView>(R.id.ageMin).text =  movie.ageMin
+        findViewById<TextView>(R.id.duration).text = movie.duration
+
+
+
     }
     companion object {
         val KEY_MOVIE_ID = "key_movie_id"

@@ -1,6 +1,5 @@
 package edu.iesam.dam2024.features.movies.data.local
 
-import android.annotation.SuppressLint
 import android.content.Context
 import com.google.gson.Gson
 import edu.iesam.dam2024.R
@@ -20,6 +19,10 @@ class MovieXmlLocalDataSource(private val context: Context) {
                 putString("id", movie.id)
                 putString("title", movie.title)
                 putString("poster", movie.poster)
+                putString("description", movie.description)
+                putString("year" , movie.year)
+                putString("ageMin", movie.ageMin)
+                putString("duration" , movie.duration)
                 apply()
             }
     }
@@ -37,7 +40,13 @@ class MovieXmlLocalDataSource(private val context: Context) {
             return Movie(
                 getString("id", "")!!,
                 getString("title", "")!!,
-                getString("poster", "")!!
+                getString("poster", "")!!,
+                getString("description" , "")!!,
+                getString("year" , "")!!,
+                getString("ageMin" , "")!!,
+                getString("duration" , "")!!,
+
+
             )
         }
     }

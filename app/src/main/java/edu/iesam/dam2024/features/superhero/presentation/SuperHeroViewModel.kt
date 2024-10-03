@@ -9,16 +9,12 @@ import edu.iesam.dam2024.features.superhero.domain.GetSuperHeroesUseCase
 import edu.iesam.dam2024.features.superhero.domain.SuperHero
 
 class SuperHeroViewModel(
-    private val getSuperHeroesUseCase: GetSuperHeroesUseCase,
-    private val getSuperHeroSelectedUseCase: GetSuperHeroSelectedUseCase
+    private val getSuperHeroesUseCase: GetSuperHeroesUseCase
 ):ViewModel(){
     fun viewCreated(): List<SuperHero>{
         return getSuperHeroesUseCase.invoke()
     }
 
-    fun itemSelected(superHeroId: String): SuperHero? {
 
-        return getSuperHeroSelectedUseCase.invoke(superHeroId)
-    }
 }
 

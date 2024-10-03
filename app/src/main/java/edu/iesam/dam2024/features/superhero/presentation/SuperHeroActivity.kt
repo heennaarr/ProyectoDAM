@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import edu.iesam.dam2024.R
-import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2024.features.superhero.data.SuperHeroDataRepository
 import edu.iesam.dam2024.features.superhero.data.local.SuperHeroXmlLocalDataSource
 import edu.iesam.dam2024.features.superhero.domain.SuperHero
 import edu.iesam.dam2024.features.superhero.domain.SuperHeroRepository
-
+import edu.iesam.dam2024.features.movies.presentation.MovieDetailActivity.Companion.KEY_SUPERHERO_ID
 class SuperHeroActivity : AppCompatActivity() {
 
     private val superHeroRepository: SuperHeroRepository = SuperHeroDataRepository(SuperHeroMockRemoteDataSource())
@@ -48,11 +48,8 @@ class SuperHeroActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.superhero_superPoder_4).text = superheroes[3].superPoder
 
         findViewById<LinearLayout>(R.id.layout_1).setOnClickListener{
-            viewModel.itemSelected(superheroes[0].id)
-            val movie1: SuperHero? =viewModel.itemSelected(superheroes[0].id)
-            movie1?.let {
-                Log.d("@dev" , "Superheroe seleccionado: ${it.alias}")
-            }
+            navigateToMovieDetail(movies[0].id)
+
 
         }
         findViewById<LinearLayout>(R.id.layout_2).setOnClickListener{
@@ -66,25 +63,10 @@ class SuperHeroActivity : AppCompatActivity() {
 
 
     }
-    private fun textXml(){
-         val xmlDataSource = SuperHeroXmlLocalDataSource(this)
-        val superHero = viewModel.itemSelected("1")
-        superHero?.let{
-            xmlDataSource.save(it)
-        }
-        val superHeroSaved= xmlDataSource.find()
-        Log.d("@dev", superHeroSaved.toString())
-        xmlDataSource.delete()
+   private fun navigateToMovieDetail(superHeroId:String){
+       startActivity(SuperHeroDetailActivity.getIntent(this, superHeroId))
+   }
 
-    }
-    private fun testListXml() {
-        val superhero = viewModel.viewCreated()
-        val xmlDataSource = SuperHeroXmlLocalDataSource(this)
-        xmlDataSource.saveAll(superhero)
-
-        val moviesFromXml = xmlDataSource.findAll()
-        Log.d("@dev", moviesFromXml.toString())
-    }
 
 
 }
