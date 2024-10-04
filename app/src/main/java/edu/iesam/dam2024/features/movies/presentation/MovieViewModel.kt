@@ -1,19 +1,46 @@
 package edu.iesam.dam2024.features.movies.presentation
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import edu.iesam.dam2024.features.movies.domain.GetMovieSelectedUseCase
+import androidx.lifecycle.viewModelScope
+import edu.iesam.dam2024.features.movies.domain.ErrorApp
 import edu.iesam.dam2024.features.movies.domain.GetMoviesUseCase
 import edu.iesam.dam2024.features.movies.domain.Movie
+
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 // Un ViewModel puede recibir todos los casos de uso que necesite la vista
 class MovieViewModel(
     private val getMoviesUseCase: GetMoviesUseCase // Ahora añadimos este caso de uso
 ) : ViewModel() {
 
+    private val _uiState = MutableLiveData<UiState>()
+     val uiState: LiveData<UiState> = _uiState
     // Llama al caso de uso para obtener la lista de películas
-    fun viewCreated(): List<Movie> {
-        return getMoviesUseCase.invoke()
-    }
+    fun viewCreated(){
+        _uiState.value = (UiState(isLoading = true))
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val movies = getMoviesUseCase.invoke()
+            delay(5000)
+            _uiState.postValue(UiState(movies = movies))
+        }
+        }
+
+    data class UiState(
+        val isLoading:Boolean = false,
+        val errorApp: ErrorApp? = null,
+        val movies : List<Movie>? = null
+    )
+
+
+
+
 
     // Llama al caso de uso para obtener la película seleccionada
 

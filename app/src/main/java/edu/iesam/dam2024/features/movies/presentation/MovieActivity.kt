@@ -7,10 +7,12 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.app.extensions.loadUrl
 import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
+import edu.iesam.dam2024.features.movies.domain.ErrorApp
 import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MovieActivity : AppCompatActivity() {
@@ -24,15 +26,30 @@ class MovieActivity : AppCompatActivity() {
 
         movieFactory = MovieFactory(this)
         viewModel = movieFactory.buildViewModel()
+        setupObserver()
+        viewModel.viewCreated()
+        //bindData(movies)
 
-        val movies = viewModel.viewCreated()
-        bindData(movies)
-
-        //testXml()
-        //testListXml()
 
     }
-
+    private fun setupObserver() {
+        val movieObserver = Observer<MovieViewModel.UiState> { uiState ->
+            uiState.movies?.let {
+                bindData(it)
+            }
+            uiState.errorApp?.let {
+                //pinto el error
+            }
+            if (uiState.isLoading) {
+                //muestro el cargando...
+                Log.d("@dev", "Cargando...")
+            } else {
+                //oculto el cargando...
+                Log.d("@dev"," Cargado ...")
+            }
+        }
+        viewModel.uiState.observe(this, movieObserver)
+    }
 
     private fun bindData(movies: List<Movie>) {
         findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
@@ -71,9 +88,19 @@ class MovieActivity : AppCompatActivity() {
 
 
     }
+    private fun showError(error:ErrorApp){
+        when(error){
+            ErrorApp.DataErrorApp -> TODO()
+            ErrorApp.InternetErrorApp -> TODO()
+            ErrorApp.ServerErrorApp -> TODO()
+            ErrorApp.UnknowErrorApp -> TODO()
+            ErrorApp.TestErrorApp -> TODO()
+        }
+    }
     private fun navigateToMovieDetail(movieId: String){
         startActivity(MovieDetailActivity.getIntent(this, movieId))
     }
+
 
 
 

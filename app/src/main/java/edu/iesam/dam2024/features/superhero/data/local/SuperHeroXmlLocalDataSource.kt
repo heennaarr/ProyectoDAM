@@ -4,6 +4,7 @@ import SuperHeroMockRemoteDataSource
 import android.content.Context
 import com.google.gson.Gson
 import edu.iesam.dam2024.R
+import edu.iesam.dam2024.features.movies.domain.Movie
 import edu.iesam.dam2024.features.superhero.domain.SuperHero
 
 class SuperHeroXmlLocalDataSource(private val context: Context) {
@@ -55,7 +56,11 @@ class SuperHeroXmlLocalDataSource(private val context: Context) {
         }
         return superHeroes
     }
-
+    fun findById(superHeroId:String): SuperHero?{
+        return sharedPref.getString(superHeroId, null)?.let{superhero->
+            gson.fromJson(superhero, SuperHero::class.java)
+        }
+    }
     fun delete(){
         sharedPref.edit().clear().apply()
     }

@@ -11,7 +11,7 @@ import edu.iesam.dam2024.features.superhero.domain.GetSuperHeroesUseCase
 class SuperHeroFactory(private val context: Context) {
     private val superHeroMockRemote = SuperHeroMockRemoteDataSource()
     private val superHeroLocal = SuperHeroXmlLocalDataSource(context)
-    private val superHeroDataRepository = SuperHeroDataRepository(superHeroLocal, superHeroMockRemote)
+    private val superHeroDataRepository = SuperHeroDataRepository( superHeroMockRemote, superHeroLocal)
     private val getSuperHeroesUseCase = GetSuperHeroesUseCase(superHeroDataRepository)
     private val getSuperHeroeSelectedUseCase = GetSuperHeroSelectedUseCase(superHeroDataRepository)
 
@@ -22,8 +22,8 @@ class SuperHeroFactory(private val context: Context) {
 
         return SuperHeroViewModel(getSuperHeroesUseCase) //NO SE PUEDE CREAR UN
     }
-    fun buildSuperHeroDetailViewModel():SuperHeroViewModel{
-        return SuperHeroViewModel(getSuperHeroeSelectedUseCase)
+    fun buildSuperHeroDetailViewModel():SuperHeroDetailViewModel{
+        return SuperHeroDetailViewModel(getSuperHeroeSelectedUseCase)
     }
 }
 
