@@ -1,9 +1,11 @@
 package edu.iesam.dam2024.features.superhero.presentation
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.superhero.domain.SuperHero
 
@@ -28,7 +30,11 @@ class SuperHeroActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.superhero_id_1).text = superheroes[0].id
         findViewById<TextView>(R.id.superhero_alias_1).text = superheroes[0].alias
         findViewById<TextView>(R.id.superhero_superPoder_1).text = superheroes[0].superPoder
-
+        val imageView = findViewById<ImageView>(R.id.layoutfotoSuperhero1)
+        Glide
+            .with(this)
+            .load(superheroes[0].imagen)
+            .into(imageView)
         findViewById<LinearLayout>(R.id.layout_superhero_1).setOnClickListener{
             navigateToMovieDetail(superheroes[0].id)
 
@@ -38,6 +44,11 @@ class SuperHeroActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.superhero_id_2).text = superheroes[1].id
         findViewById<TextView>(R.id.superhero_alias_2).text = superheroes[1].alias
         findViewById<TextView>(R.id.superhero_superPoder_2).text = superheroes[1].superPoder
+        val imageView2 = findViewById<ImageView>(R.id.layoutfotoSuperhero2)
+        Glide
+            .with(this)
+            .load(superheroes[1].imagen)
+            .into(imageView2)
         findViewById<LinearLayout>(R.id.layout_superhero_2).setOnClickListener{
             navigateToMovieDetail(superheroes[1].id)
 
@@ -47,6 +58,11 @@ class SuperHeroActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.superhero_id_3).text = superheroes[2].id
         findViewById<TextView>(R.id.superhero_alias_3).text = superheroes[2].alias
         findViewById<TextView>(R.id.superhero_superPoder_3).text = superheroes[2].superPoder
+        val imageView3 = findViewById<ImageView>(R.id.layoutfotoSuperhero3)
+        Glide
+            .with(this)
+            .load(superheroes[2].imagen)
+            .into(imageView3)
         findViewById<LinearLayout>(R.id.layout_superhero_3).setOnClickListener{
             navigateToMovieDetail(superheroes[2].id)
 
@@ -56,6 +72,11 @@ class SuperHeroActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.superhero_id_4).text = superheroes[3].id
         findViewById<TextView>(R.id.superhero_alias_4).text = superheroes[3].alias
         findViewById<TextView>(R.id.superhero_superPoder_4).text = superheroes[3].superPoder
+        val imageView4 = findViewById<ImageView>(R.id.layoutfotoSuperhero4)
+        Glide
+            .with(this)
+            .load(superheroes[3].imagen)
+            .into(imageView4)
         findViewById<LinearLayout>(R.id.layout_superhero_4).setOnClickListener{
             navigateToMovieDetail(superheroes[3].id)
 

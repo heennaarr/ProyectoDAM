@@ -20,15 +20,15 @@
         android:layout_weight="1">
 
         <!-- Imagen a la izquierda -->
+
+        <!-- Contenedor de ID y título a la derecha -->
         <ImageView
             android:id="@+id/imagen1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
 
-        <!-- Contenedor de ID y título a la derecha -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
