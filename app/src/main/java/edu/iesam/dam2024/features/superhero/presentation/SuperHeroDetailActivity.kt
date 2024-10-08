@@ -3,9 +3,11 @@ package edu.iesam.dam2024.features.superhero.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 
 import com.bumptech.glide.Glide
 import edu.iesam.dam2024.R
@@ -21,10 +23,28 @@ class SuperHeroDetailActivity : AppCompatActivity() {
         superHeroFactory = SuperHeroFactory(this)
         viewModel = superHeroFactory.buildSuperHeroDetailViewModel()
         getSuperHeroId()?.let { superheroId ->
-            viewModel.viewCreated(superheroId)?.let { superhero ->
-                bindData(superhero)
+            viewModel.viewCreated(superheroId)
+        }
+        setupObserver()
+    }
+    private fun setupObserver(){
+        val superHeroObserver = Observer<SuperHeroDetailViewModel.UiState> { uistate ->
+            uistate.superhero?.let {
+                bindData(it)
+            }
+            uistate.errorApp?.let {
+                //pinto el error
+            }
+            if (uistate.isLoading) {
+                //muestro el cargando...
+                Log.d("@dev", "Cargando...")
+            } else {
+                //oculto el cargando...
+                Log.d("@dev", " Cargado ...")
             }
         }
+        viewModel.uiState.observe(this, superHeroObserver)
+
     }
     private fun getSuperHeroId(): String? {
         return intent.getStringExtra(KEY_SUPERHERO_ID)
