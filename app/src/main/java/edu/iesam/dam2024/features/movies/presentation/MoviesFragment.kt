@@ -53,7 +53,7 @@ class MoviesFragment: Fragment() {
         val imageView1 = binding.imagen1
         imageView1.loadUrl(movies[0].poster)
        binding.layout1.setOnClickListener {
-           findNavController().navigate(R.)
+           navigateToMovieDetail(movies[1].id)
 
         }
 

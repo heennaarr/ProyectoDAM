@@ -7,20 +7,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.app.extensions.loadUrl
-import edu.iesam.dam2024.databinding.FragmentMoviesBinding
+import edu.iesam.dam2024.databinding.FragmentMoviesDetailBinding
 import edu.iesam.dam2024.features.movies.domain.Movie
+import edu.iesam.dam2024.features.movies.presentation.MovieDetailActivity.Companion.KEY_MOVIE_ID
 
 class MovieDetailFragment: Fragment() {
     private lateinit var movieFactory: MovieFactory
     private lateinit var viewModel: MovieDetailViewModel
 
-    private var _binding : FragmentMoviesBinding?=null
+    private var _binding : FragmentMoviesDetailBinding?=null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class MovieDetailFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMoviesBinding.inflate(inflater,container,false)
+        _binding = FragmentMoviesDetailBinding.inflate(inflater,container,false)
         return binding.root
     }
     private fun setupObserver() {
@@ -54,15 +54,26 @@ class MovieDetailFragment: Fragment() {
     private fun bindData(movie: Movie) {
         val imageView = binding.poster
         imageView.loadUrl(movie.poster)
-        Log.d("poster" , movie.poster)
-        findViewById<TextView>(R.id.titleMovie).text=movie.title
-        findViewById<TextView>(R.id.descriptionMovie).text = movie.description
-        findViewById<TextView>(R.id.year).text = movie.year
-        findViewById<TextView>(R.id.ageMin).text =  movie.ageMin
-        findViewById<TextView>(R.id.duration).text = movie.duration
+        binding.titleMovie.text=movie.title
+        binding.descriptionMovie.text = movie.description
+        binding.year.text = movie.year
+        binding.ageMin.text =  movie.ageMin
+        binding.duration.text = movie.duration
 
 
 
+    }
+    private fun getMovieId(): String? {
+        return intent.getStringExtra(KEY_MOVIE_ID)
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupObserver()
+        movieFactory = MovieFactory(requireContext())
+        viewModel = movieFactory.buildMovieDetailViewModel()
+        getMovieId()?.let { movieId ->
+            viewModel.viewCreated(movieId)
+        }
     }
 
 }
