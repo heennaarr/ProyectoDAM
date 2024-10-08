@@ -32,6 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -43,7 +47,12 @@ dependencies {
     implementation(libs.gson.serializer)
     implementation(libs.glide)
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.nav.ui)
+    implementation(libs.nav.fragment)
+    api(libs.nav.fragment.ktx)
+    //testing
     testImplementation(libs.junit)
+    //android testing
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

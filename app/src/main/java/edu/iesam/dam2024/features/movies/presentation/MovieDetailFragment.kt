@@ -4,25 +4,32 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import edu.iesam.dam2024.app.extensions.loadUrl
 import edu.iesam.dam2024.R
+import edu.iesam.dam2024.app.extensions.loadUrl
+import edu.iesam.dam2024.databinding.FragmentMoviesBinding
 import edu.iesam.dam2024.features.movies.domain.Movie
-class MovieDetailActivity : AppCompatActivity() {
+
+class MovieDetailFragment: Fragment() {
     private lateinit var movieFactory: MovieFactory
     private lateinit var viewModel: MovieDetailViewModel
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_movies_detail)
-        movieFactory = MovieFactory(this)
-        viewModel = movieFactory.buildMovieDetailViewModel()
-        getMovieId()?.let { movieId ->
-            viewModel.viewCreated(movieId)
-        }
-        setupObserver()
+
+    private var _binding : FragmentMoviesBinding?=null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentMoviesBinding.inflate(inflater,container,false)
+        return binding.root
     }
     private fun setupObserver() {
         val movieObserver = Observer<MovieDetailViewModel.UiState> { uiState ->
@@ -44,11 +51,8 @@ class MovieDetailActivity : AppCompatActivity() {
 
 
     }
-    private fun getMovieId(): String? {
-        return intent.getStringExtra(KEY_MOVIE_ID)
-    }
     private fun bindData(movie: Movie) {
-        val imageView = findViewById<ImageView>(R.id.poster)
+        val imageView = binding.poster
         imageView.loadUrl(movie.poster)
         Log.d("poster" , movie.poster)
         findViewById<TextView>(R.id.titleMovie).text=movie.title
@@ -60,12 +64,5 @@ class MovieDetailActivity : AppCompatActivity() {
 
 
     }
-    companion object {
-        val KEY_MOVIE_ID = "key_movie_id"
-        fun getIntent(context: Context, movieId: String): Intent {
-            val intent = Intent(context, MovieDetailActivity::class.java)
-            intent.putExtra(KEY_MOVIE_ID, movieId)
-            return intent
-        }
-    }
+
 }

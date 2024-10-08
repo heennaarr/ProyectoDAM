@@ -24,82 +24,9 @@ class MovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        movieFactory = MovieFactory(this)
-        viewModel = movieFactory.buildViewModel()
-        setupObserver()
-        viewModel.viewCreated()
-        //bindData(movies)
-
-
-    }
-    private fun setupObserver() {
-        val movieObserver = Observer<MovieViewModel.UiState> { uiState ->
-            uiState.movies?.let {
-                bindData(it)
-            }
-            uiState.errorApp?.let {
-                //pinto el error
-            }
-            if (uiState.isLoading) {
-                //muestro el cargando...
-                Log.d("@dev", "Cargando...")
-            } else {
-                //oculto el cargando...
-                Log.d("@dev"," Cargado ...")
-            }
-        }
-        viewModel.uiState.observe(this, movieObserver)
     }
 
-    private fun bindData(movies: List<Movie>) {
-        findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
-        findViewById<TextView>(R.id.movie_title_1).text = movies[0].title
-        val imageView1 = findViewById<ImageView>(R.id.imagen1)
-        imageView1.loadUrl(movies[0].poster)
-        findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
-            navigateToMovieDetail(movies[0].id)
 
-        }
-
-        findViewById<TextView>(R.id.movie_id_2).text = movies[1].id
-        findViewById<TextView>(R.id.movie_title_2).text = movies[1].title
-        val imageView2 = findViewById<ImageView>(R.id.imagen2)
-        imageView2.loadUrl(movies[1].poster)
-        findViewById<LinearLayout>(R.id.layout_2).setOnClickListener {
-            navigateToMovieDetail(movies[1].id)
-        }
-
-        findViewById<TextView>(R.id.movie_id_3).text = movies[2].id
-        findViewById<TextView>(R.id.movie_title_3).text = movies[2].title
-        val imageView3 = findViewById<ImageView>(R.id.imagen3)
-        imageView3.loadUrl(movies[2].poster)
-        findViewById<LinearLayout>(R.id.layout_3).setOnClickListener {
-            navigateToMovieDetail(movies[2].id)
-        }
-
-
-        findViewById<TextView>(R.id.movie_id_4).text = movies[3].id
-        findViewById<TextView>(R.id.serie_title_4).text = movies[3].title
-        val imageView4 = findViewById<ImageView>(R.id.imagen4)
-        imageView4.loadUrl(movies[3].poster)
-        findViewById<LinearLayout>(R.id.layout_4).setOnClickListener {
-            navigateToMovieDetail(movies[3].id)
-        }
-
-
-    }
-    private fun showError(error:ErrorApp){
-        when(error){
-            ErrorApp.DataErrorApp -> TODO()
-            ErrorApp.InternetErrorApp -> TODO()
-            ErrorApp.ServerErrorApp -> TODO()
-            ErrorApp.UnknowErrorApp -> TODO()
-            ErrorApp.TestErrorApp -> TODO()
-        }
-    }
-    private fun navigateToMovieDetail(movieId: String){
-        startActivity(MovieDetailActivity.getIntent(this, movieId))
-    }
 
 
 
