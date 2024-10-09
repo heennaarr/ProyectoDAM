@@ -47,7 +47,7 @@ class MoviesFragment: Fragment() {
                 Log.d("@dev"," Cargado ...")
             }
         }
-        viewModel.uiState.observe(this, movieObserver)
+        viewModel.uiState.observe(viewLifecycleOwner, movieObserver)
     }
     private fun bindData(movies: List<Movie>) {
         binding.movieId1.text= movies[0].id
@@ -89,9 +89,9 @@ class MoviesFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObserver()
         movieFactory = MovieFactory(requireContext())
         viewModel= movieFactory.buildViewModel()
+        setupObserver()
         viewModel.viewCreated()
     }
 

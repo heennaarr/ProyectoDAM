@@ -69,9 +69,10 @@ class MovieDetailFragment: Fragment() {
     }*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObserver()
+
         movieFactory = MovieFactory(requireContext())
         viewModel = movieFactory.buildMovieDetailViewModel()
+        setupObserver()
         /*getMovieId()?.let { movieId ->
             viewModel.viewCreated(movieId)
         }*/
