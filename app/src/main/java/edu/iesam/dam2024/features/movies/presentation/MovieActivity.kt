@@ -17,9 +17,6 @@ import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MovieActivity : AppCompatActivity() {
 
-    private lateinit var movieFactory: MovieFactory
-    private lateinit var viewModel : MovieViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.navigateUp
+import edu.iesam.dam2024.R
 import edu.iesam.dam2024.app.extensions.loadUrl
 import edu.iesam.dam2024.databinding.FragmentMoviesBinding
 import edu.iesam.dam2024.features.movies.domain.ErrorApp
@@ -103,7 +105,7 @@ class MoviesFragment: Fragment() {
         }
     }
     private fun navigateToMovieDetail(movieId: String){
-        startActivity(MovieDetailActivity.getIntent(requireContext(), movieId))
+        findNavController().navigate(R.id.action_movie_fragment_to_movie_fragment_detail)
     }
 
 

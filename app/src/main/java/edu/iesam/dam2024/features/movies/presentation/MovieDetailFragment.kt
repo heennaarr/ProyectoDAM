@@ -10,6 +10,7 @@ import android.view.ViewGroup
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.app.extensions.loadUrl
 import edu.iesam.dam2024.databinding.FragmentMoviesDetailBinding
@@ -47,7 +48,7 @@ class MovieDetailFragment: Fragment() {
                 Log.d("@dev"," Cargado ...")
             }
         }
-        viewModel.uiState.observe(this, movieObserver)
+        viewModel.uiState.observe(viewLifecycleOwner, movieObserver)
 
 
     }
@@ -63,17 +64,18 @@ class MovieDetailFragment: Fragment() {
 
 
     }
-    private fun getMovieId(): String? {
-        return intent.getStringExtra(KEY_MOVIE_ID)
-    }
+  /*  private fun getMovieId(): String? {
+      //  return intent.getStringExtra(KEY_MOVIE_ID)
+    }*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObserver()
         movieFactory = MovieFactory(requireContext())
         viewModel = movieFactory.buildMovieDetailViewModel()
-        getMovieId()?.let { movieId ->
+        /*getMovieId()?.let { movieId ->
             viewModel.viewCreated(movieId)
-        }
+        }*/
+
     }
 
 }
