@@ -13,10 +13,7 @@ import edu.iesam.dam2024.features.movies.domain.GetMoviesUseCase
 class MovieFactory(private val context: Context) {
     private val movieMockRemote = MovieMockRemoteDataSource()
     private val movieLocal = MovieXmlLocalDataSource(context)
-
-    // Fixed argument order here
     private val movieDataRepository = MovieDataRepository(movieMockRemote, movieLocal)
-
     val getMoviesUseCase = GetMoviesUseCase(movieDataRepository)
     val getMovieSelectedUseCase = GetMovieSelectedUseCase(movieDataRepository)
 

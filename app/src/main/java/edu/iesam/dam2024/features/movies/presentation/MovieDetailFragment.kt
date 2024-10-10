@@ -1,21 +1,16 @@
 package edu.iesam.dam2024.features.movies.presentation
 
-import android.content.Context
-import android.content.Intent
+
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
-import edu.iesam.dam2024.R
 import edu.iesam.dam2024.app.extensions.loadUrl
 import edu.iesam.dam2024.databinding.FragmentMoviesDetailBinding
 import edu.iesam.dam2024.features.movies.domain.Movie
-import edu.iesam.dam2024.features.movies.presentation.MovieDetailActivity.Companion.KEY_MOVIE_ID
 
 class MovieDetailFragment: Fragment() {
     private lateinit var movieFactory: MovieFactory

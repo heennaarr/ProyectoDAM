@@ -1,182 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    tools:context=".features.movies.presentation.MovieActivity">
+    tools:context=".features.movies.presentation.MovieDetailActivity">
 
-    <!-- Fila 1 -->
-    <LinearLayout
-        android:id="@+id/layout_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
 
-        <!-- Imagen a la izquierda -->
-
-        <!-- Contenedor de ID y título a la derecha -->
-        <ImageView
-            android:id="@+id/imagen1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop" />
-
+        <!-- Fila 1 -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginLeft="20dp"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-            android:orientation="vertical"
-            android:gravity="center_vertical">
+            <!-- Imagen a la izquierda -->
 
-            <TextView
-                android:id="@+id/movie_id_1"
-                android:layout_width="wrap_content"
+            <!-- Contenedor de ID y título a la derecha -->
+            <ImageView
+                android:id="@+id/imagen1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                 />
+                android:layout_weight="2"
+                android:layout_marginLeft="20dp"
 
-            <TextView
-                android:id="@+id/movie_title_1"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 />
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/movie_id_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:id="@+id/movie_title_1"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Fila 2 -->
-    <LinearLayout
-        android:id="@+id/layout_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <!-- Imagen a la izquierda -->
-        <ImageView
-            android:id="@+id/imagen2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            />
-
-        <!-- Contenedor de ID y título a la derecha -->
+        <!-- Fila 2 -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/layout_2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginLeft="20dp"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-            android:orientation="vertical"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/movie_id_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <!-- Imagen a la izquierda -->
+            <ImageView
+                android:id="@+id/imagen2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
                 />
 
-            <TextView
-                android:id="@+id/movie_title_2"
-                android:layout_width="wrap_content"
+            <!-- Contenedor de ID y título a la derecha -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                 />
+                android:layout_weight="2"
+                android:layout_marginLeft="20dp"
+
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/movie_id_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:id="@+id/movie_title_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Fila 3 -->
-    <LinearLayout
-        android:id="@+id/layout_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <!-- Imagen a la izquierda -->
-        <ImageView
-            android:id="@+id/imagen3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            />
-
-        <!-- Contenedor de ID y título a la derecha -->
+        <!-- Fila 3 -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/layout_3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginLeft="20dp"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_weight="1">
 
-            android:orientation="vertical"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/movie_id_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 />
-
-            <TextView
-                android:id="@+id/movie_title_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Fila 4 -->
-    <LinearLayout
-        android:id="@+id/layout_4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <!-- Imagen a la izquierda -->
-        <ImageView
-            android:id="@+id/imagen4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
-            />
-
-        <!-- Contenedor de ID y título a la derecha -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/movie_id_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <!-- Imagen a la izquierda -->
+            <ImageView
+                android:id="@+id/imagen3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
                 />
 
-            <TextView
-                android:id="@+id/movie_title_4"
-                android:layout_width="wrap_content"
+            <!-- Contenedor de ID y título a la derecha -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                 />
+                android:layout_weight="2"
+                android:layout_marginLeft="20dp"
+
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/movie_id_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:id="@+id/movie_title_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
         </LinearLayout>
+
+        <!-- Fila 4 -->
+        <LinearLayout
+            android:id="@+id/layout_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <!-- Imagen a la izquierda -->
+            <ImageView
+                android:id="@+id/imagen4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                />
+
+            <!-- Contenedor de ID y título a la derecha -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/movie_id_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:id="@+id/movie_title_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>

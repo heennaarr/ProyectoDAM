@@ -1,5 +1,4 @@
-package edu.iesam.dam2024.features.movies.presentation
-
+package edu.iesam.dam2024.features.superhero.presentation
 
 import android.os.Bundle
 
@@ -7,11 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 
 import edu.iesam.dam2024.R
 
-class MovieDetailActivity : AppCompatActivity() {
+
+class SuperHeroDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_movies_detail)
+        setContentView(R.layout.fragment_superhero_detail)
 
     }
 

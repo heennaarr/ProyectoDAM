@@ -10,7 +10,9 @@ import edu.iesam.dam2024.features.superhero.domain.SuperHero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SuperHeroDetailViewModel(private val getSuperHeroSelectedUseCase: GetSuperHeroSelectedUseCase):ViewModel() {
+class SuperHeroDetailViewModel(
+    private val getSuperHeroSelectedUseCase: GetSuperHeroSelectedUseCase
+):ViewModel() {
     private val _uiState = MutableLiveData<UiState>()
     val uiState : LiveData<UiState> = _uiState
     fun viewCreated(movieId: String){

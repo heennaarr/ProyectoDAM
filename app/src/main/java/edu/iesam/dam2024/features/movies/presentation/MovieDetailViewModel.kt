@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import edu.iesam.dam2024.features.movies.domain.ErrorApp
 import edu.iesam.dam2024.features.movies.domain.GetMovieSelectedUseCase
-import edu.iesam.dam2024.features.movies.domain.GetMoviesUseCase
 import edu.iesam.dam2024.features.movies.domain.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -2,6 +2,7 @@ package edu.iesam.dam2024.features.superhero.presentation
 
 import SuperHeroMockRemoteDataSource
 import android.content.Context
+import edu.iesam.dam2024.features.movies.presentation.MovieDetailViewModel
 import edu.iesam.dam2024.features.superhero.data.SuperHeroDataRepository
 import edu.iesam.dam2024.features.superhero.data.local.SuperHeroXmlLocalDataSource
 import edu.iesam.dam2024.features.superhero.domain.GetSuperHeroSelectedUseCase
@@ -19,6 +20,11 @@ class SuperHeroFactory(private val context: Context) {
     fun getSuperHeroListViewModel(): SuperHeroListViewModel{
         return SuperHeroListViewModel(getSuperHeroesUseCase)
     }
+
+    fun buildSuperHeroDetailViewModel(): SuperHeroDetailViewModel {
+        return SuperHeroDetailViewModel(getSuperHeroeSelectedUseCase)
+    }
+
 }
 
     // OBJETO DE UNA INSTANCIA pero de una clase si por lo que hacemos que la instancia
