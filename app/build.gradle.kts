@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.navigation.safeargs.kotlin)
 }
 
 android {
@@ -39,7 +40,6 @@ android {
     buildFeatures {
         viewBinding = true
 
-        compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"

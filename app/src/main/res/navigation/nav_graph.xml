@@ -39,5 +39,12 @@
         <action
             android:id="@+id/action_superhero_fragment_detail_to_superhero_fragment"
             app:destination="@id/superhero_fragment"/>
+        <argument
+            android:name="superHeroId"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
-</navigation>
+
+
+
+    </navigation>

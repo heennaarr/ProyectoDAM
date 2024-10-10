@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import edu.iesam.dam2024.databinding.FragmentSuperheroDetailBinding
 import edu.iesam.dam2024.features.superhero.domain.SuperHero
 
@@ -16,6 +17,7 @@ class SuperHeroDetailFragment : Fragment() {
 
     private var _binding: FragmentSuperheroDetailBinding? = null
     private val binding get() = _binding!!
+    private val superHeroArgs: SuperHeroDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,8 +30,8 @@ class SuperHeroDetailFragment : Fragment() {
 
     private fun setupObserver() {
         val superheroObserver = Observer<SuperHeroDetailViewModel.UiState> { uiState ->
-            uiState.superhero?.let {
-                bindData(it)
+            uiState.superhero?.let { superheroes ->
+                bindData(superheroes)
             }
             uiState.errorApp?.let {
                 // Manejar el error aquí
@@ -44,23 +46,17 @@ class SuperHeroDetailFragment : Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner, superheroObserver)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        superHeroFactory = SuperHeroFactory(requireContext())
-        viewModel = superHeroFactory.buildSuperHeroDetailViewModel()
-        setupObserver()
-        /*getMovieId()?.let { movieId ->
-            viewModel.viewCreated(movieId)
-        }*/
-
+        superHeroArgs.superHeroId
     }
 
 
 
-
     private fun bindData(superHero: SuperHero) {
-
+        binding.alias.text = superHero.alias
+        binding.superpoder.text = superHero.superPoder
     }
 
 
