@@ -63,7 +63,7 @@ class MoviesFragment: Fragment() {
         val imageView1 = binding.imagen1
         imageView1.loadUrl(movies[0].poster)
        binding.layout1.setOnClickListener {
-           navigateToMovieDetail(movies[1].id)
+           navigateToMovieDetail(movies[0].id)
 
         }
 
@@ -107,7 +107,7 @@ class MoviesFragment: Fragment() {
         }
     }
     private fun navigateToMovieDetail(superHeroId: String){
-        findNavController().navigate(R.id.action_movie_fragment_to_movie_fragment_detail)
+        findNavController().navigate(MoviesFragmentDirections.actionMovieFragmentToMovieFragmentDetail(superHeroId))
     }
     override fun onDestroyView() {
         super.onDestroyView()
