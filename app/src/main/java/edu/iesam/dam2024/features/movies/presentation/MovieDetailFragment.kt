@@ -11,11 +11,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.app.extensions.loadUrl
 import edu.iesam.dam2024.databinding.FragmentMoviesDetailBinding
 import edu.iesam.dam2024.features.movies.domain.Movie
-import edu.iesam.dam2024.features.movies.presentation.MovieDetailActivity.Companion.KEY_MOVIE_ID
 
 class MovieDetailFragment: Fragment() {
     private lateinit var movieFactory: MovieFactory
@@ -24,6 +24,7 @@ class MovieDetailFragment: Fragment() {
     private var _binding : FragmentMoviesDetailBinding?=null
     private val binding get() = _binding!!
 
+    private val moviesArgs: MovieDetailFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -71,11 +72,13 @@ class MovieDetailFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         movieFactory = MovieFactory(requireContext())
-        viewModel = movieFactory.buildMovieDetailViewModel()
+        viewModel = movieFactory.builMovieDetailViewModel()
         setupObserver()
-        /*getMovieId()?.let { movieId ->
-            viewModel.viewCreated(movieId)
-        }*/
+      moviesArgs.movieId
+        viewModel.viewCreated(moviesArgs.movieId)
+
+
+
 
     }
 

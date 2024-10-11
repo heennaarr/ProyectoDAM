@@ -31,6 +31,13 @@ class MoviesFragment: Fragment() {
         _binding = FragmentMoviesBinding.inflate(inflater,container,false)
         return binding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        movieFactory = MovieFactory(requireContext())
+        viewModel= movieFactory.getMoviesListViewModel()
+        setupObserver()
+        viewModel.loadMovies()
+    }
     private fun setupObserver() {
         val movieObserver = Observer<MovieViewModel.UiState> { uiState ->
             uiState.movies?.let {
@@ -50,6 +57,7 @@ class MoviesFragment: Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner, movieObserver)
     }
     private fun bindData(movies: List<Movie>) {
+
         binding.movieId1.text= movies[0].id
         binding.movieTitle1.text =movies[0].title
         val imageView1 = binding.imagen1
@@ -87,13 +95,7 @@ class MoviesFragment: Fragment() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        movieFactory = MovieFactory(requireContext())
-        viewModel= movieFactory.buildViewModel()
-        setupObserver()
-        viewModel.viewCreated()
-    }
+
 
     private fun showError(error: ErrorApp){
         when(error){
@@ -104,13 +106,13 @@ class MoviesFragment: Fragment() {
             ErrorApp.TestErrorApp -> TODO()
         }
     }
-    private fun navigateToMovieDetail(movieId: String){
+    private fun navigateToMovieDetail(superHeroId: String){
         findNavController().navigate(R.id.action_movie_fragment_to_movie_fragment_detail)
     }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

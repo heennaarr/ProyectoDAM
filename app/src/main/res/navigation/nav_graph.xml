@@ -13,12 +13,14 @@
 
         <action
             android:id="@+id/action_movie_fragment_to_movie_fragment_detail"
-            app:destination="@id/movie_fragment_detail">
+            app:destination="@id/movie_detail_fragment">
         </action>
 
     </fragment>
+
+
     <fragment
-        android:id="@+id/movie_fragment_detail"
+        android:id="@+id/movie_detail_fragment"
         android:name="edu.iesam.dam2024.features.movies.presentation.MovieDetailFragment"
         tools:layout="@layout/fragment_movies_detail"
         >
@@ -26,6 +28,9 @@
             android:id="@+id/action_movie_fragment_detail_to_movie_fragment"
             app:destination="@id/movie_fragment">
         </action>
-
+        <argument
+            android:name="movieId"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
 </navigation>

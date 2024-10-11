@@ -22,12 +22,11 @@ class MovieViewModel(
     private val _uiState = MutableLiveData<UiState>()
      val uiState: LiveData<UiState> = _uiState
     // Llama al caso de uso para obtener la lista de películas
-    fun viewCreated(){
+    fun loadMovies(){
         _uiState.value = (UiState(isLoading = true))
 
         viewModelScope.launch(Dispatchers.IO) {
             val movies = getMoviesUseCase.invoke()
-            delay(5000)
             _uiState.postValue(UiState(movies = movies))
         }
         }
