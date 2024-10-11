@@ -9,7 +9,7 @@
     tools:context=".features.superhero.presentation.SuperHeroActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:title="SuperHero"
+        app:title="SuperHero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -68,9 +68,8 @@ class MovieDetailFragment: Fragment() {
         movieFactory = MovieFactory(requireContext())
         viewModel = movieFactory.buildMovieDetailViewModel()
         setupObserver()
-        /*getMovieId()?.let { movieId ->
-            viewModel.viewCreated(movieId)
-        }*/
+        //viewModel.viewCreated(movieId)
+
 
     }
 

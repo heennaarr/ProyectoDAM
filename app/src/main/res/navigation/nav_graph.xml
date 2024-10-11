@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/superhero_fragment">
+    app:startDestination="@id/movie_fragment">
 
     <fragment
         android:id="@+id/movie_fragment"
@@ -21,6 +21,7 @@
         <action
             android:id="@+id/action_movie_fragment_detail_to_movie_fragment"
             app:destination="@id/movie_fragment"/>
+
     </fragment>
 
     <fragment

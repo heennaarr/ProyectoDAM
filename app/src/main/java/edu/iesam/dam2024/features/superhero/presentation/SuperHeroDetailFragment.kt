@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import edu.iesam.dam2024.app.extensions.loadUrl
 import edu.iesam.dam2024.databinding.FragmentSuperheroDetailBinding
 import edu.iesam.dam2024.features.superhero.domain.SuperHero
 
@@ -50,13 +51,21 @@ class SuperHeroDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         superHeroArgs.superHeroId
+        superHeroFactory = SuperHeroFactory(requireContext())
+        viewModel = superHeroFactory.buildSuperHeroDetailViewModel()
+        setupObserver()
+        viewModel.viewCreated(superHeroArgs.superHeroId)
     }
 
 
 
     private fun bindData(superHero: SuperHero) {
+        val imageView3 = binding.imagen
+        imageView3.loadUrl(superHero.imagen)
         binding.alias.text = superHero.alias
         binding.superpoder.text = superHero.superPoder
+        binding.nombreSuperheroe.text = superHero.nombre
+        binding.descripcionSuperheroe.text = superHero.ocupacion
     }
 
 
