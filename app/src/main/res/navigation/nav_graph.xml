@@ -33,4 +33,30 @@
             app:argType="string"
             app:nullable="false" />
     </fragment>
+    <fragment
+        android:id="@+id/pokemon_fragment"
+        android:name="edu.iesam.dam2024.features.pokemon.presentation.PokemonFragment"
+        tools:layout="@layout/fragment_pokemon">
+        <action
+            android:id="@+id/action_pokemon_fragment_to_pokemon_fragment_detail"
+            app:destination="@id/pokemon_detail_fragment">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/pokemon_detail_fragment"
+        android:name="edu.iesam.dam2024.features.pokemon.presentation.PokemonDetailFragment"
+        tools:layout="layout/fragment_pokemon_detail"
+        >
+        <action
+            android:id="@+id/action_pokemon_fragment_detail_to_pokemon_fragment"
+            app:destination="@id/pokemon_fragment">
+        </action>
+        <argument
+            android:name="pokemonId"
+            app:argType="string"
+            app:nullable="false" />
+
+    </fragment>
+
+
 </navigation>
