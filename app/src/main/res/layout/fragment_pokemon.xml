@@ -117,7 +117,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:layout_marginLeft="20dp"
-
             android:orientation="vertical"
             android:gravity="center_vertical">
 
@@ -131,6 +130,7 @@
                 android:id="@+id/pokemon_nombre_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 />
         </LinearLayout>
     </LinearLayout>

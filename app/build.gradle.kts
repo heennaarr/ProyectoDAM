@@ -1,3 +1,4 @@
+val ktor_version: String by project
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -51,6 +52,10 @@ dependencies {
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.nav.ui)
     implementation(libs.nav.fragment)
+    implementation("io.ktor:ktor-client-core:$ktor_version")
+    implementation("io.ktor:ktor-client-cio:$ktor_version")
+    implementation(libs.kotlinx.serialization.json) // Para la serialización JSON
+
     api(libs.nav.fragment.ktx)
     //testing
     testImplementation(libs.junit)

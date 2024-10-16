@@ -7,7 +7,7 @@ import edu.iesam.dam2024.features.pokemon.domain.Pokemon
 
 class PokemonXmlLocalDataSource(private val context: Context) {
     private val sharedPref = context.getSharedPreferences(
-        context.getString(R.string.name_file_xml), Context.MODE_PRIVATE
+        "pokemon",Context.MODE_PRIVATE
     )
 
     private val gson = Gson()

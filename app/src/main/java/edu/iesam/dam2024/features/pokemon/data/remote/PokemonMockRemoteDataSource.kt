@@ -6,7 +6,7 @@ class PokemonMockRemoteDataSource {
     private val Pokemons = listOf(
         Pokemon(
             "1",
-            "pikachu",
+            "pikachu32",
             "rayo",
             "electrico",
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
@@ -14,7 +14,7 @@ class PokemonMockRemoteDataSource {
         ),
         Pokemon(
             "2",
-            "pikachu",
+            "pikachu3",
             "rayo",
             "electrico",
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"

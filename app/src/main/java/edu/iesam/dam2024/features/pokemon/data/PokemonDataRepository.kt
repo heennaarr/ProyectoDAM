@@ -20,10 +20,10 @@ class PokemonDataRepository(
         }
     }
 
-    override fun getPokemon(PokemonId: String): Pokemon? {
-        val localPokemon = local.findById(PokemonId)
+    override fun getPokemon(pokemonId: String): Pokemon? {
+        val localPokemon = local.findById(pokemonId)
         if(localPokemon== null){
-            pokemonMockRemoteDataSource.getPokemon(PokemonId)?.let{
+            pokemonMockRemoteDataSource.getPokemon(pokemonId)?.let{
                 local.save(it)
                 return it
             }

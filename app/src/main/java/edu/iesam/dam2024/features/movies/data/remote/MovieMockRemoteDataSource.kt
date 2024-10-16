@@ -1,5 +1,9 @@
+import android.util.Log
 import edu.iesam.dam2024.features.movies.domain.Movie
-
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
 
 /**
  * Naming: Modelo + Tecnología + RemoteDataSource
@@ -20,4 +24,6 @@ class MovieMockRemoteDataSource {
     fun getMovie(movieId: String): Movie? {
         return movies.firstOrNull { it.id == movieId }
     }
+
+
 }

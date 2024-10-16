@@ -1,5 +1,6 @@
 package edu.iesam.dam2024.features.movies.presentation
 
+import MovieApiRemoteDataSource
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,12 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.navigateUp
-import edu.iesam.dam2024.R
 import edu.iesam.dam2024.app.extensions.loadUrl
 import edu.iesam.dam2024.databinding.FragmentMoviesBinding
 import edu.iesam.dam2024.features.movies.domain.ErrorApp
 import edu.iesam.dam2024.features.movies.domain.Movie
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class MoviesFragment: Fragment() {
@@ -22,6 +23,9 @@ class MoviesFragment: Fragment() {
 
     private var _binding : FragmentMoviesBinding?=null
     private val binding get() = _binding!!
+
+    //testing
+    private val movieApiRemoteDataSource = MovieApiRemoteDataSource()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +41,9 @@ class MoviesFragment: Fragment() {
         viewModel= movieFactory.getMoviesListViewModel()
         setupObserver()
         viewModel.loadMovies()
+        GlobalScope.launch {
+            movieApiRemoteDataSource.buildClient()
+        }
     }
     private fun setupObserver() {
         val movieObserver = Observer<MovieViewModel.UiState> { uiState ->

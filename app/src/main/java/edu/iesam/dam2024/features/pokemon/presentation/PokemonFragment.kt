@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import edu.iesam.dam2024.app.extensions.loadUrl
 import edu.iesam.dam2024.databinding.FragmentPokemonBinding
-import edu.iesam.dam2024.features.movies.presentation.MoviesFragmentDirections
 import edu.iesam.dam2024.features.pokemon.domain.ErrorApp
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon
 
@@ -61,6 +60,7 @@ class PokemonFragment: Fragment() {
         binding.pokemonId1.text = pokemons[0].id
         binding.pokemonNombre1.text = pokemons[0].nombre
         val imageView1 = binding.imagen1
+
         imageView1.loadUrl(pokemons[0].imagen)
         binding.layout1.setOnClickListener {
             navigateToPokemonDetail(pokemons[0].id)
@@ -82,13 +82,6 @@ class PokemonFragment: Fragment() {
             navigateToPokemonDetail(pokemons[2].id)
         }
 
-        binding.pokemonId4.text = pokemons[3].id
-        binding.pokemonNombre4.text = pokemons[3].nombre
-        val imageView4 = binding.imagen4
-        imageView4.loadUrl(pokemons[3].imagen)
-        binding.layout4.setOnClickListener {
-            navigateToPokemonDetail(pokemons[3].id)
-        }
 
 
     }
