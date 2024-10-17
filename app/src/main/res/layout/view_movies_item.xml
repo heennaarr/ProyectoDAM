@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    
+    android:background="@android:color/white"
+    android:padding="16dp">
+
     <ImageView
         android:id="@+id/image"
-        android:layout_width="0dp"
+        android:layout_width="80dp"
         android:layout_height="120dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:src="@tools:sample/avatars"
-        app:layout_constraintEnd_toEndOf="parent"
         android:scaleType="centerCrop"
-        >
+        tools:src="@tools:sample/avatars"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    </ImageView>
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:id="@+id/name"
-        app:layout_constraintTop_toBottomOf="@id/image"
-        app:layout_constraintStart_toStartOf="@id/image"
-        app:layout_constraintEnd_toEndOf="@id/image"
-        android:text="superman"
-        >
-
-    </TextView>
-    <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/descripcion"
-        app:layout_constraintTop_toBottomOf="@id/name"
-        app:layout_constraintStart_toStartOf="@id/image"
-        app:layout_constraintEnd_toEndOf="@id/image"
-        android:text="description"
-        >
+        android:layout_margin="8dp"
+        android:text="Superman"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toTopOf="@id/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread" />
 
-    </TextView>
-    
+    <TextView
+        android:id="@+id/descripcion"
+        android:layout_width="0dp"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:text="Descripción breve del personaje o elemento."
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

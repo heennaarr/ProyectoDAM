@@ -1,12 +1,12 @@
 package edu.iesam.dam2024.features.movies.domain
 
-import edu.iesam.dam2024.features.movies.data.MovieDataRepository
+import MovieDataRepository
 
 class GetMovieSelectedUseCase(private val movieRepository: MovieDataRepository) {
 
-        operator fun invoke(movieId: String): Movie? {
-            return movieRepository.getMovie(movieId)
-        }
-
-
+    suspend operator fun invoke(movieId: String): Movie? {
+        return movieRepository.getMovie(movieId)
     }
+
+
+}

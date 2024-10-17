@@ -1,8 +1,9 @@
 package edu.iesam.dam2024.features.movies.presentation
 
+import MovieApiRemoteDataSource
 import MovieMockRemoteDataSource
 import android.content.Context
-import edu.iesam.dam2024.features.movies.data.MovieDataRepository
+import MovieDataRepository
 import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2024.features.movies.domain.GetMovieSelectedUseCase
 import edu.iesam.dam2024.features.movies.domain.GetMoviesUseCase
@@ -11,7 +12,7 @@ import edu.iesam.dam2024.features.movies.domain.GetMoviesUseCase
  * Esta clase solo va a crear objetos
  */
 class MovieFactory(private val context: Context) {
-    private val movieMockRemote = MovieMockRemoteDataSource()
+    private val movieMockRemote = MovieApiRemoteDataSource()
     private val movieLocal = MovieXmlLocalDataSource(context)
 
     // Fixed argument order here
@@ -27,11 +28,10 @@ class MovieFactory(private val context: Context) {
     fun builMovieDetailViewModel(): MovieDetailViewModel {
         return MovieDetailViewModel(getMovieSelectedUseCase)
     }
-   /* fun buildViewModel(): MovieViewModel {
-        return MovieViewModel(getMoviesUseCase)
-    }
-
-    fun buildMovieDetailViewModel(): MovieDetailViewModel {
-        return MovieDetailViewModel(getMovieSelectedUseCase)
-    }*/
+    /* fun buildViewModel(): MovieViewModel {
+         return MovieViewModel(getMoviesUseCase)
+     }
+     fun buildMovieDetailViewModel(): MovieDetailViewModel {
+         return MovieDetailViewModel(getMovieSelectedUseCase)
+     }*/
 }

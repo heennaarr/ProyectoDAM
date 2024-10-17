@@ -90,10 +90,11 @@ class MoviesFragment: Fragment() {
             ErrorApp.TestErrorApp -> TODO()
         }
     }
-    private fun navigateToMovieDetail(superHeroId: String){
-        findNavController().navigate(R.id.action_movie_fragment_to_movie_fragment_detail)
+    private fun navigateToMovieDetail(movieId: String){
+        findNavController().navigate(MoviesFragmentDirections.actionMovieFragmentToMovieFragmentDetail(movieId))
     }
-    override fun onDestroyView() {
+
+        override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }

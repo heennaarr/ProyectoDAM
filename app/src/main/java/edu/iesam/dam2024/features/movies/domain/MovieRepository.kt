@@ -6,6 +6,6 @@ package edu.iesam.dam2024.features.movies.domain
  */
 //eS LA FORMA PARA IR DE DENTRO HACIA FUERA
 interface MovieRepository {
-    fun getMovies(): List<Movie>
-    fun getMovie(movieId: String): Movie?
+    suspend fun getMovies(): List<Movie>
+    suspend fun getMovie(movieId: String): Movie?
 }

@@ -1,21 +1,24 @@
-package edu.iesam.dam2024.features.movies.data
-
-import MovieMockRemoteDataSource
 import edu.iesam.dam2024.features.movies.data.local.MovieXmlLocalDataSource
 import edu.iesam.dam2024.features.movies.domain.Movie
 import edu.iesam.dam2024.features.movies.domain.MovieRepository
-
-// Coordinadora de todas las fuentes de datos
-// Recibe por parámetro todas las fuentes de datos que puede gestionar
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Dispatchers
 
 class MovieDataRepository(
-    private val mockRemoteDataSource: MovieMockRemoteDataSource,
+    private val mockRemoteDataSource: MovieApiRemoteDataSource,
     private val local: MovieXmlLocalDataSource
 ): MovieRepository {
-    override fun getMovies(): List<Movie> {
+    // Hacemos la función suspend
+    override suspend fun getMovies(): List<Movie> {
         val movieFromLocal = local.findAll()
         return if (movieFromLocal.isEmpty()) {
-            val moviesFromRemote = mockRemoteDataSource.getMovies()
+            // Usamos withContext para llamar al método suspend
+            val moviesFromRemote = withContext(Dispatchers.IO) {
+                mockRemoteDataSource.buildClient()
+            }
             local.saveAll(moviesFromRemote)
             moviesFromRemote
         } else {
@@ -23,14 +26,20 @@ class MovieDataRepository(
         }
     }
 
-    override fun getMovie(movieId: String): Movie? {
-        val localMovie = local.findById(movieId)
-        if(localMovie== null){
-             mockRemoteDataSource.getMovie(movieId)?.let{
-                 local.save(it)
-                 return it
-             }
+    override suspend fun getMovie(movieId: String): Movie? {
+        // Primero intentamos buscar la película localmente
+        val movieFromLocal = local.findById(movieId)
+        return if (movieFromLocal != null) {
+            // Si existe en local, la devolvemos
+            movieFromLocal
+        } else {
+            // Si no está en local, la buscamos en el servidor remoto
+            val movieFromRemote = withContext(Dispatchers.IO) {
+                mockRemoteDataSource.buildClientOneMovie(movieId)
+            }
+            // Guardamos la película obtenida en el almacenamiento local
+            local.save(movieFromRemote)
+            movieFromRemote
         }
-        return localMovie
     }
 }
