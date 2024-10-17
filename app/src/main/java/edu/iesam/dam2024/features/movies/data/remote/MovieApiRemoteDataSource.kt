@@ -20,4 +20,15 @@ class MovieApiRemoteDataSource {
         Log.d("@dev", response.toString())
         return response
     }
+    suspend fun buildClientOneMovie(movieId: String): Movie {
+        val client = HttpClient(CIO) {
+            install(ContentNegotiation) {
+                json()
+            }
+        }
+        // Realiza la petición HTTP con el movieId dinámico
+        val response: Movie = client.get("http://10.0.2.2:8080/tasks/$movieId").body()
+        Log.d("@dev", response.toString())
+        return response
+    }
 }

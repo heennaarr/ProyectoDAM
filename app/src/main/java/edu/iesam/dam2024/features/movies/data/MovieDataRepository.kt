@@ -27,7 +27,21 @@ class MovieDataRepository(
         }
     }
 
-    override fun getMovie(movieId: String): Movie? {
-        TODO("Not yet implemented")
+    override suspend fun getMovie(movieId: String): Movie? {
+        // Primero intentamos buscar la película localmente
+        val movieFromLocal = local.findById(movieId)
+
+        return if (movieFromLocal != null) {
+            // Si existe en local, la devolvemos
+            movieFromLocal
+        } else {
+            // Si no está en local, la buscamos en el servidor remoto
+            val movieFromRemote = withContext(Dispatchers.IO) {
+                mockRemoteDataSource.buildClientOneMovie(movieId)
+            }
+            // Guardamos la película obtenida en el almacenamiento local
+            local.save(movieFromRemote)
+            movieFromRemote
+        }
     }
 }
