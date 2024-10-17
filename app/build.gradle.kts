@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.navigation.safeargs.kotlin)
+    kotlin("plugin.serialization") version "2.0.21"
 
 }
 
@@ -55,6 +56,8 @@ dependencies {
     implementation("io.ktor:ktor-client-core:$ktor_version")
     implementation("io.ktor:ktor-client-cio:$ktor_version")
     implementation(libs.kotlinx.serialization.json) // Para la serialización JSON
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
 
     api(libs.nav.fragment.ktx)
     //testing
