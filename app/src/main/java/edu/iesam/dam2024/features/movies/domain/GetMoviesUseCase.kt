@@ -1,6 +1,6 @@
 package edu.iesam.dam2024.features.movies.domain
 
-import edu.iesam.dam2024.features.movies.data.MovieDataRepository
+import MovieDataRepository
 
 /**
  * Naming: Verbo(acción)+ UseCase
@@ -12,7 +12,7 @@ import edu.iesam.dam2024.features.movies.data.MovieDataRepository
 class GetMoviesUseCase(private val movieRepository: MovieDataRepository) {
    //no hay ningun import de MovieRepository por que esta dentro de domain
     //un repositorio por cada entidad
-    operator fun invoke(): List<Movie> {
+    suspend operator fun invoke(): List<Movie> {
         return movieRepository.getMovies()
     }
 }

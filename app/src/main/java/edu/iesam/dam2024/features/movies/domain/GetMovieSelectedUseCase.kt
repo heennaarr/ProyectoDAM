@@ -1,6 +1,6 @@
 package edu.iesam.dam2024.features.movies.domain
 
-import edu.iesam.dam2024.features.movies.data.MovieDataRepository
+import MovieDataRepository
 
 class GetMovieSelectedUseCase(private val movieRepository: MovieDataRepository) {
 

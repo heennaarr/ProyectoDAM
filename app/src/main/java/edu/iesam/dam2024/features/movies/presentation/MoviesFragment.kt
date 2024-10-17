@@ -74,30 +74,6 @@ class MoviesFragment: Fragment() {
 
         }
 
-        binding.movieId2.text=  movies[1].id
-        binding.movieTitle2.text =movies[1].title
-        val imageView2 = binding.imagen2
-        imageView2.loadUrl(movies[1].poster)
-        binding.layout2.setOnClickListener {
-            navigateToMovieDetail(movies[1].id)
-        }
-
-        binding.movieId3.text=  movies[2].id
-        binding.movieTitle3.text =movies[2].title
-        val imageView3 = binding.imagen3
-        imageView3.loadUrl(movies[2].poster)
-        binding.layout3.setOnClickListener {
-            navigateToMovieDetail(movies[2].id)
-        }
-
-
-        binding.movieId4.text=  movies[3].id
-        binding.movieTitle4.text= movies[3].title
-        val imageView4 = binding.imagen4
-        imageView4.loadUrl(movies[3].poster)
-        binding.layout4.setOnClickListener {
-            navigateToMovieDetail(movies[3].id)
-        }
 
 
     }
