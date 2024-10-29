@@ -2,17 +2,13 @@ package edu.iesam.dam2024.features.movies.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import edu.iesam.dam2024.features.movies.domain.ErrorApp
 import edu.iesam.dam2024.features.movies.domain.GetMoviesUseCase
 import edu.iesam.dam2024.features.movies.domain.Movie
-
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 // Un ViewModel puede recibir todos los casos de uso que necesite la vista
 class MovieViewModel(

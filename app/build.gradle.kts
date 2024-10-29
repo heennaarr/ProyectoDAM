@@ -58,7 +58,9 @@ dependencies {
     implementation(libs.kotlinx.serialization.json) // Para la serialización JSON
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
     implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-
+    implementation(libs.retrofit)
+    implementation(libs.retrofitConverterGson)
+    // Navigation
     api(libs.nav.fragment.ktx)
     //testing
     testImplementation(libs.junit)
